@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { ProgressBar } from 'react-bootstrap';
 import {Badge} from 'reactstrap';
+import * as generalHelper from "../../helper/general"
+
 // import {Badge} from 'react-bootstrap';
 import ReactTable from "react-table";
 import withFixedColumns from "react-table-hoc-fixed-columns";
+import { BackgroundTokenizer } from 'brace';
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
 
@@ -12,31 +15,67 @@ const ReactTableFixedColumns = withFixedColumns(ReactTable);
 
 export class BlankPage extends Component {
   render() {
-
+    const dataTransaction = [
+      {
+        id : 1,
+        title : "Income",
+        color : "#a3dc6c" 
+      },{
+        id : 2,
+        title : "Expense",
+        color : "#f76775" 
+      },{
+        id : 3,
+        title : "Transfer",
+        color : "#63c3ff" 
+      }
+      
+    ]
+    const dataCategory = [
+      {
+        id : 1,
+        title : "Food & Drinks",
+        color : "#d62b2b" 
+      },{
+        id : 2,
+        title : "Shopping",
+        color : "#5ac0ff" 
+      }
+    ]
+    const a = dataCategory.filter(opt => opt.id === 1)[0].title;
+    console.log(a)
     const columns = [
       {
-        Header: "Category",
-        accessor: "data1",
+        Header: "Transaction",
+        accessor: "transaction",
         // filterable: true,
         headerClassName: "bg-primary py-3 text-white",
         width : 150,
         Cell: row => {
-          return (<Badge color="primary" className='text-white' pill >{row.value}</Badge>);
-        },
+          const transaction = dataTransaction.filter(opt => opt.id === row.value) ? dataTransaction.filter(opt => opt.id === row.value)[0] : '';  
+          return (<Badge color="" style={{backgroundColor: transaction.color}} className='text-white' pill >{transaction.title}</Badge>);
+        }
       },
       {
         Header: "Value",
         accessor: "data2",
         // filterable: true,
         headerClassName: "bg-primary py-3 text-white",
-        width : 150
+        width : 150,
+        Cell: row => {
+          return generalHelper.FormatIDR(row.value);
+        }
       },
       {
         Header: "Category",
-        accessor: "data3",
+        accessor: "category",
         // filterable: true,
         headerClassName: "bg-primary py-3 text-white",
-        width : 150
+        width : 150,
+        Cell: row => {
+          const category = dataCategory.filter(opt => opt.id === row.value) ? dataCategory.filter(opt => opt.id === row.value)[0] : '';  
+          return (<Badge color="" style={{backgroundColor: category.color}} className='text-white' pill >{category.title}</Badge>);
+        }
       },
       {
         Header: "Sub Category",
@@ -99,28 +138,33 @@ export class BlankPage extends Component {
 
     const data = [
       {
-        data1 : 'Expense',
-        data2 : 'abc',
+        transaction : 2,
+        data2 : 10000,
+        category: 1,
         data3 : 'alpha'
       },
       {
-        data1 : 'Expense',
-        data2 : 'def',
+        transaction : 2,
+        data2 : 20000,
+        category: 1,
         data3 : 'beta'
       },
       {
-        data1 : 'Income',
-        data2 : 'ghi',
+        transaction : 1,
+        data2 : 150000,
+        category: 1,
         data3 : 'gama'
       },
       {
-        data1 : 'Transfer',
-        data2 : 'ghi',
+        transaction : 3,
+        data2 : 15000,
+        category: 1,
         data3 : 'gama'
       },
       {
-        data1 : 'Expense',
-        data2 : 'ghi',
+        transaction : 2,
+        data2 : 7500,
+        category: 1,
         data3 : 'gama'
       }
     ];
