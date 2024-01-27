@@ -1,17 +1,10 @@
 import React, { Component } from 'react'
-import { ProgressBar } from 'react-bootstrap';
 import {Badge} from 'reactstrap';
 import * as generalHelper from "../../helper/general"
 
-// import {Badge} from 'react-bootstrap';
 import ReactTable from "react-table";
 import withFixedColumns from "react-table-hoc-fixed-columns";
-import { BackgroundTokenizer } from 'brace';
 const ReactTableFixedColumns = withFixedColumns(ReactTable);
-
-
-// import "react-table-hoc-fixed-columns/lib/styles.css";
-// import "react-table/react-table.css";
 
 export class BlankPage extends Component {
   render() {
@@ -40,6 +33,37 @@ export class BlankPage extends Component {
         id : 2,
         title : "Shopping",
         color : "#5ac0ff" 
+      }
+    ]
+    const dataPaymentType = [
+      {
+        id : 1,
+        title : "Cash",
+        color : "#9c9fa6" 
+      },{
+        id : 2,
+        title : "Bank Transfer",
+        color : "#9c9fa6" 
+      },{
+        id : 3,
+        title : "QRIS",
+        color : "#9c9fa6" 
+      },{
+        id : 4,
+        title : "Debit Card - EDC",
+        color : "#9c9fa6" 
+      },{
+        id : 5,
+        title : "Credit Card - EDC",
+        color : "#9c9fa6" 
+      },{
+        id : 6,
+        title : "Auto Debit",
+        color : "#9c9fa6" 
+      },{
+        id : 7,
+        title : "e-wallet (Gopay)",
+        color : "#9c9fa6" 
       }
     ]
     const a = dataCategory.filter(opt => opt.id === 1)[0].title;
@@ -93,34 +117,44 @@ export class BlankPage extends Component {
       },
       {
         Header: "Note",
-        accessor: "data3",
+        accessor: "note",
         // filterable: true,
+        headerClassName: "bg-primary py-3 text-white",
+        width : 250
+      },
+      {
+        Header: "Label",
+        accessor: "label",
         headerClassName: "bg-primary py-3 text-white",
         width : 150
       },
       {
-        Header: "Label",
-        accessor: "data3",
+        Header: "Payee",
+        accessor: "payee",
         headerClassName: "bg-primary py-3 text-white",
         width : 150
       },
       {
         Header: "Date",
-        accessor: "data3",
+        accessor: "date",
         headerClassName: "bg-primary py-3 text-white",
         width : 150
       },
       {
         Header: "Time",
-        accessor: "data3",
+        accessor: "time",
         headerClassName: "bg-primary py-3 text-white",
         width : 150
       },
       {
         Header: "Payment Type",
-        accessor: "data3",
+        accessor: "paymentType",
         headerClassName: "bg-primary py-3 text-white",
-        width : 150
+        width : 150,
+        Cell: row => {
+          const paymentType = dataPaymentType.filter(opt => opt.id === row.value) ? dataPaymentType.filter(opt => opt.id === row.value)[0] : '';  
+          return (<Badge color="" style={{backgroundColor: paymentType.color}} className='text-white' pill >{paymentType.title}</Badge>);
+        }
       },
       {
         Header: "Merchant",
@@ -138,34 +172,64 @@ export class BlankPage extends Component {
 
     const data = [
       {
-        transaction : 2,
-        data2 : 10000,
+        transaction: 2,
+        data2: 10000,
         category: 1,
-        data3 : 'alpha'
+        data3: 'alpha',
+        note: 'note1',
+        label: '',
+        payee: '',
+        date: '2024-01-01',
+        time: '09:10',
+        paymentType: 1
       },
       {
-        transaction : 2,
-        data2 : 20000,
+        transaction: 2,
+        data2: 20000,
         category: 1,
-        data3 : 'beta'
+        data3: 'beta',
+        note: 'note2',
+        label: '',
+        payee: '',
+        date: '2024-01-02',
+        time: '10:10',
+        paymentType: 2
       },
       {
-        transaction : 1,
-        data2 : 150000,
+        transaction: 1,
+        data2: 150000,
         category: 1,
-        data3 : 'gama'
+        data3: 'gama',
+        note: 'note3',
+        label: '',
+        payee: '',
+        date: '2024-01-03',
+        time: '11:10',
+        paymentType: 2
       },
       {
-        transaction : 3,
-        data2 : 15000,
+        transaction: 3,
+        data2: 15000,
         category: 1,
-        data3 : 'gama'
+        data3: 'gama',
+        note: 'note4',
+        label: '',
+        payee: '',
+        date: '2024-01-04',
+        time: '12:10',
+        paymentType: 3
       },
       {
-        transaction : 2,
-        data2 : 7500,
-        category: 1,
-        data3 : 'gama'
+        transaction: 2,
+        data2: 7500,
+        category: 2,
+        data3: 'gama',
+        note: 'note5',
+        label: '',
+        payee: '',
+        date: '2024-01-05',
+        time: '13:10',
+        paymentType: 7
       }
     ];
     return (
@@ -180,71 +244,14 @@ export class BlankPage extends Component {
         </nav>
       </div>
       <div className="row">
-        {/* <div className="col-lg-12 grid-margin stretch-card">
-          <div className="card">
-            <div className="card-body">
-              <h4 className="card-title">Hoverable Table</h4>
-              <p className="card-description"> Add className <code>.table-hover</code>
-              </p>
-              <div className="table-responsive">
-                <table className="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>User</th>
-                      <th>Product</th>
-                      <th>Sale</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Jacob</td>
-                      <td>Photoshop</td>
-                      <td className="text-danger"> 28.76% <i className="mdi mdi-arrow-down"></i></td>
-                      <td><label className="badge badge-danger">Pending</label></td>
-                    </tr>
-                    <tr>
-                      <td>Messsy</td>
-                      <td>Flash</td>
-                      <td className="text-danger"> 21.06% <i className="mdi mdi-arrow-down"></i></td>
-                      <td><label className="badge badge-warning">In progress</label></td>
-                    </tr>
-                    <tr>
-                      <td>John</td>
-                      <td>Premier</td>
-                      <td className="text-danger"> 35.00% <i className="mdi mdi-arrow-down"></i></td>
-                      <td><label className="badge badge-info">Fixed</label></td>
-                    </tr>
-                    <tr>
-                      <td>Peter</td>
-                      <td>After effects</td>
-                      <td className="text-success"> 82.00% <i className="mdi mdi-arrow-up"></i></td>
-                      <td><label className="badge badge-success">Completed</label></td>
-                    </tr>
-                    <tr>
-                      <td>Dave</td>
-                      <td>53275535</td>
-                      <td className="text-success"> 98.05% <i className="mdi mdi-arrow-up"></i></td>
-                      <td><label className="badge badge-warning">In progress</label></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div> */}
         <div className="col-lg-12 grid-margin stretch-card">
           <div className="card bg-transparent p-0">
             <div className="card-body  p-0" >
-              {/* <h4 className="card-title">Striped Table</h4> */}
-              {/* <p className="card-description"> Add className <code>.table-striped</code>
-              </p> */}
               <ReactTableFixedColumns
                 data={data}
                 columns={columns}
                 pageSize={10}
                 showPagination={true}
-                // sortable={true}
                 style={{fontSize: "0.875rem"}}
                 className="-striped -highlight"
               />
