@@ -80,7 +80,7 @@ class Sidebar extends Component {
           </li>
           <li className={ this.isPathActive('/transaction') ? 'nav-item active' : 'nav-item' }>
             <Link className="nav-link" to="/transaction/records">
-              <span className="menu-title"><Trans>Transaction</Trans></span>
+              <span className="menu-title"><Trans>Records</Trans></span>
               <i className="mdi mdi-view-list menu-icon"></i>
             </Link>
           </li>

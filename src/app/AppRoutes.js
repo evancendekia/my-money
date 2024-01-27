@@ -3,7 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Spinner from '../app/shared/Spinner';
 
-const Dashboard = lazy(() => import('./base/dashboard/Dashboard'));
+const Dashboard = lazy(() => import('./modules/Dashboard/DashBoardContainer'));
+// const Dashboard = lazy(() => import('./modules/Dashboard/Dashboard'));
 
 
 
@@ -32,7 +33,8 @@ const Lockscreen = lazy(() => import('./base/user-pages/Lockscreen'));
 
 const BlankPage = lazy(() => import('./base/general-pages/BlankPage'));
 
-const Records = lazy(()=> import('./modules/transaction/records'));
+const Records = lazy(()=> import('./modules/Transaction/TransactionContainer'));
+// const Records = lazy(()=> import('./modules/Transaction/Records'));
 
 
 
