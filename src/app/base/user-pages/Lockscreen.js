@@ -9,7 +9,7 @@ export class LockScreen extends Component {
           <div className="row w-100 align-items-center">
             <div className="col-lg-4 mx-auto">
               <div className="auth-form-transparent text-left p-5 text-center">
-                <img src={require("../../assets/images/faces/face13.jpg")} className="lock-profile-img" alt="img" />
+                <img src={require("../../../assets/images/faces/face13.jpg")} className="lock-profile-img" alt="img" />
                 <form className="pt-5">
                   <div className="form-group">
                     <label>Password to unlock</label>

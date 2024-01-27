@@ -3,36 +3,36 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Spinner from '../app/shared/Spinner';
 
-const Dashboard = lazy(() => import('./dashboard/Dashboard'));
+const Dashboard = lazy(() => import('./base/dashboard/Dashboard'));
 
 
 
-const Buttons = lazy(() => import('./basic-ui/Buttons'));
-const Dropdowns = lazy(() => import('./basic-ui/Dropdowns'));
-const Typography = lazy(() => import('./basic-ui/Typography'));
+const Buttons = lazy(() => import('./base/basic-ui/Buttons'));
+const Dropdowns = lazy(() => import('./base/basic-ui/Dropdowns'));
+const Typography = lazy(() => import('./base/basic-ui/Typography'));
 
 
-const BasicElements = lazy(() => import('./form-elements/BasicElements'));
+const BasicElements = lazy(() => import('./base/form-elements/BasicElements'));
 
-const BasicTable = lazy(() => import('./tables/BasicTable'));
-
-
-
-const Mdi = lazy(() => import('./icons/Mdi'));
+const BasicTable = lazy(() => import('./base/tables/BasicTable'));
 
 
-const ChartJs = lazy(() => import('./charts/ChartJs'));
 
-const Error404 = lazy(() => import('./error-pages/Error404'));
-const Error500 = lazy(() => import('./error-pages/Error500'));
+const Mdi = lazy(() => import('./base/icons/Mdi'));
 
-const Login = lazy(() => import('./user-pages/Login'));
-const Register1 = lazy(() => import('./user-pages/Register'));
-const Lockscreen = lazy(() => import('./user-pages/Lockscreen'));
 
-const BlankPage = lazy(() => import('./general-pages/BlankPage'));
+const ChartJs = lazy(() => import('./base/charts/ChartJs'));
 
-const Records = lazy(()=> import('./transaction/records'));
+const Error404 = lazy(() => import('./base/error-pages/Error404'));
+const Error500 = lazy(() => import('./base/error-pages/Error500'));
+
+const Login = lazy(() => import('./base/user-pages/Login'));
+const Register1 = lazy(() => import('./base/user-pages/Register'));
+const Lockscreen = lazy(() => import('./base/user-pages/Lockscreen'));
+
+const BlankPage = lazy(() => import('./base/general-pages/BlankPage'));
+
+const Records = lazy(()=> import('./modules/transaction/records'));
 
 
 

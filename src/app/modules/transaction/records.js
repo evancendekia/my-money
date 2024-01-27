@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Badge} from 'reactstrap';
-import * as generalHelper from "../../helper/general"
+import * as generalHelper from "../../../helper/general"
 
 import ReactTable from "react-table";
 import withFixedColumns from "react-table-hoc-fixed-columns";
